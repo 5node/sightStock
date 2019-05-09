@@ -33,8 +33,6 @@ contract InterfaceModule {
 
     // 프로덕트 구매자 제어자 (will go to PurchaseModule)
 
-
-
     function getSig(bytes _data) internal pure returns (bytes4 sig) {
         uint len = _data.length < 4 ? _data.length : 4;
         

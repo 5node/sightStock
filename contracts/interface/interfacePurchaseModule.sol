@@ -12,5 +12,5 @@ import "./InterfaceModule.sol";
 
 contract InterfacePurchaseModule is InterfaceModule {
     
-    uint256 public klay_granularity;
+    function getNumberPurchasers() public view returns (uint256);
 }
