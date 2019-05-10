@@ -41,8 +41,6 @@ contract InterfaceProduct {
     uint8 public constant INVEST_KEY = 1;
     uint8 public constant PURCHASE_KEY = 2;
     
-    uint256 public klay_granularity;
-    
     uint256 public investorCount;
     uint256 public purchaserCount;
 
@@ -57,5 +55,6 @@ contract InterfaceProduct {
     function getPurchasersLength() public view returns(uint256);
     
     // function addMultiContents() public returns(bool);
+    
     // function addContent() public returns(bool)
 }

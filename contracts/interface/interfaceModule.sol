@@ -20,10 +20,10 @@ contract InterfaceModule {
     }
     
     // 레지스트리의 관리자 확인 제어자
-    // modifier onlyRegistryAdmin {
-    //     require(true == InterfaceSigStockRegistry(sigStockRegistry).adminGroup(msg.sender), "msg.sender is not admin");
-    //     _;
-    // }
+    modifier onlyRegistryAdmin {
+        require(true == InterfaceSigStockRegistry(sigStockRegistry).SIGSTOCK_ADMINS(msg.sender), "msg.sender is not admin");
+        _;
+    }
 
     // 프로덕트의 상품 창작자 제어자
 
