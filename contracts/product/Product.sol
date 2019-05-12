@@ -63,13 +63,19 @@ contract Product is InterfaceProduct {
     * @dev invest 모듈에서 해당 값을 불러온다. 
      */ 
     function getInvestorsLength() public returns (uint256) {
+        // uint256 investorsLength = InterfaceInvestorModule(module[INVEST_KEY]).getNumberInvestors();
+        // return investorsLength;
 
     }
+    
     /**
     * @dev purchase 모듈에서 해당 값을 불러온다.
      */
-    function getPurchasersLength() public returns (uint256) {
 
+    function getPurchasersLength() public returns (uint256) {
+        // uint256 purchasersLength = InterfacePurchaseModule(module[PURCHASE_KEY]).getNumberPurchasers();
+        
+        // return purchasersLength;
     }
 
     /**
@@ -82,4 +88,33 @@ contract Product is InterfaceProduct {
     
     // function addModule
     // function deleteModule
+    
+    // @ TODO : 제어자 추가해야한다.
+    function setInvestConfigure(uint256 _startTime, uint256 _endTime, uint256 _cap, uint256 _max_investors, address _fundsReceiver, address _from)
+    public returns (bool) {
+        
+        // InterfaceInvestModule(module[INVEST_KEY]).configure();
+    }
+
+    // @ TODO : 제어자 추가해야한다.
+    function setPurchaseConfigure(uint256 _startTime, uint256 _endTime, uint256 _cap, uint256 _max_Purchasers, address _fundsReceiver, address _from)
+    public returns (bool) {
+        
+        // InterfacePurchaseModule(module[INVEST_KEY]).configure();
+    }
+
+    function getRaiseKlayFromInvest() public view returns (uint256) {
+        // uint256 _getKlay = InterfaceInvestModule(module[INVEST_KEY]).getRaisedKlay();
+
+        // return _getKlay;
+    }
+    
+    function getRaiseKlayFromPurchase() public view returns (uint256) {
+        
+        // uint256 _getKlay = InterfacePurchaseModule(module[PURCHASE_KEY]).getRaisedKlay();
+        
+        // return _getKlay;
+    }
+
+
 }
