@@ -63,36 +63,30 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard {
     }
 
     function investProduct(address _investor) public payable nonReentrant returns(bool) {
+        
         uint256 klayAmount = msg.value;
 
         _processTx(_investor, klayAmount);
-
 
         return true;
     }
 
     function _processTx(address _beneficiary, uint256 _investedAmount) internal {
 
-        _preValidatePurchase(_beneficiary, _investedAmount);
+        _preValidateInvest(_beneficiary, _investedAmount);
         // calculate token amount to be created
         uint256 klays = _investedAmount;
 
         // update state
         fundsRaised = fundsRaised.add(_investedAmount);
 
-
         _processInvest(_beneficiary, klays);
+
         emit ProductInvest(msg.sender, _beneficiary, _investedAmount, klays);
 
     }
 
-    /**
-    * @notice Validation of an incoming purchase.
-      Use require statements to revert state when conditions are not met. Use super to concatenate validations.
-    * @param _beneficiary Address performing the token purchase
-    * @param _investedAmount Value in wei involved in the purchase
-    */
-    function _preValidatePurchase(address _beneficiary, uint256 _investedAmount) internal view {
+    function _preValidateInvest(address _beneficiary, uint256 _investedAmount) internal view {
         require(_beneficiary != address(0), "Beneficiary address should not be 0x");
         require(_investedAmount != 0, "Amount invested should not be equal to 0");
         require(productSold.add(_investedAmount) <= cap, "Investment more than cap is not allowed");
@@ -115,9 +109,21 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard {
         // _deliverProductStock(_beneficiary, _tokenAmount);
     }
     
-    // @ TODO : ERC721로 해당 사용자에게 민트 시켜주는 것 구현하기 
+    // @TODO : ERC721로 해당 사용자에게 민트 시켜주는 것 구현하기 
     // function _deliverProductStock(address _beneficiary, uint256 _tokenAmount) internal {
             
     //         return true;
     // }
+
+    function getNumberInvestors() public view returns (uint256) {
+        return investorCount;
+    }
+
+    function getRaisedKlay() public view returns (uint256) {       
+        return fundsRaised;
+    }
+
+    function capReached() public view returns (bool) {
+        return productSold >= cap;
+    }
 }

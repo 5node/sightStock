@@ -13,8 +13,8 @@ contract InterfaceProduct {
 
     /**
      * @param content_key : 오프체인 해시 값
-     * @param mainTitle : 제목
-     * @param subTitle : 소제목
+     * @param mainTitle : 대 제목
+     * @param subTitle : 소 제목
      * @param description : 내용
      * @param createdTime : 만들어진 시간
      * @param recital : 비고
@@ -24,8 +24,8 @@ contract InterfaceProduct {
         string mainTitle;
         string subTitle;
         string description;
-        uint256 createdTime;
         string recital;
+        uint256 createdTime;
     }
     
     mapping(uint8 => ContentData) public productItems;
@@ -41,18 +41,18 @@ contract InterfaceProduct {
     uint8 public constant INVEST_KEY = 1;
     uint8 public constant PURCHASE_KEY = 2;
     
-    uint256 public investorCount;
-    uint256 public purchaserCount;
+    // uint256 public investorCount;
+    // uint256 public purchaserCount;
 
-    address[] public investors;
-    address[] public purchasers;
+    // address[] public investors;
+    // address[] public purchasers;
 
     
     function getModule(uint8 _moduleType, uint8 _moduleIndex) public view returns (bytes32, address);
     
-    function getInvestorsLength() public view returns(uint256);
+    // function getInvestorsLength() public view returns(uint256);
 
-    function getPurchasersLength() public view returns(uint256);
+    // function getPurchasersLength() public view returns(uint256);
     
     // function addMultiContents() public returns(bool);
     
