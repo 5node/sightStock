@@ -1,7 +1,7 @@
 pragma solidity >=0.4.24;
 
 import "../interface/InterfaceSigStockRegistry.sol";
-
+import "../product/Product.sol";
 
 /**
 * 부모 컨트랙트		
@@ -9,9 +9,50 @@ import "../interface/InterfaceSigStockRegistry.sol";
 2. 크리에이터는 작품 컨트랙트를 만들 수 있다. onlyCreater   		
 3. 크리에이터 판별 여부 함수를 보유한다. public		
 4. (투자자 / 구매자) 상태 내역 저장할 것인가?		
+5. product 추가 하기
  */
- 
+
+
+
 contract SigStockRegistry is InterfaceSigStockRegistry {
+    
+    mapping(address => address) productOwner;
+    
+    event CreatedProduct(address indexed _from, address indexed _product);
+    event AddedCustomProduct(address indexed _from, address indexed _product);
+    
+    modifier onlyCreator() {
+        require(true == isCreator[msg.sender], "is not creator");
+        _;
+    }
+
+    // modifier onlyAdmin() {
+    //     require(true == SIGSTOCK_ADMINS[msg.sender], "is not admin");
+    //     _;
+    // }
+
+    // 수동 추가
+    function addCustomProduct(address _productAddress) public onlyCreator returns (bool) {
+                
+        productOwner[msg.sender] = _productAddress;
+        emit AddedCustomProduct(msg.sender, _productAddress);
+
+        return true;
+    }
+
+    // 자동 추가
+    function createProduct() public onlyCreator returns (address) {
+        
+        Product product = new Product();
+
+        productOwner[msg.sender] = address(product);
+        
+        Product(product).transferOwnership(msg.sender);
+
+        emit CreatedProduct(msg.sender, address(product));
+        
+        return address(product);
+    }
 
     function changeSigStockOwnership(address _sigStockOwner) public onlySigStockOwner returns (bool) {
         

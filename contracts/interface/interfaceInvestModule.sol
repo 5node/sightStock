@@ -1,7 +1,7 @@
 pragma solidity >=0.4.24;
 
 import "./InterfaceModule.sol";
-import "../erc20/ERC20Basic.sol";
+import "../ERC20/ERC20Basic.sol";
 /**
 * @dev 기초 투자 인터페이스 ( 투자자를 위한 )
 *

@@ -2,7 +2,9 @@ pragma solidity >=0.4.24;
 
 import "../../interface/InterfaceInvestModule.sol";
 import "../../library/ReentrancyGuard.sol";
-import "../../library/SafeMath.sol";
+import "../../ERC721/ERC721.sol";
+import "../../ERC721/ERC721Enumerable.sol";
+// import "../../library/SafeMath.sol";
 
 /**
 * @dev 기본적인 투자 모듈 ( 투자자를 위한 )
@@ -12,12 +14,20 @@ import "../../library/SafeMath.sol";
 * 
  */
 
-contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard {
+contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ERC721Enumerable {
     using SafeMath for uint256;
     
+    event DeliveredStock(uint256 tokenId, address indexed beneficiary, uint256 amount);
+    event LogGranularityChanged(uint256 _oldGranularity, uint256 _newGranularity);
     event ProductInvest(address indexed investor, address indexed beneficiary, uint256 value, uint256 amount);
     
-    
+    struct InvestData {
+        uint256 tokenId;
+        address[] ownerHistory;
+        uint256 amount;
+        uint256 timeStamp;
+    }
+    uint public granularity;
     uint public constant rate = 1;
     uint256 public investorCount;
     uint256 public productSold;
@@ -31,13 +41,28 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard {
     address public fundsWallet;
 
     mapping (address => uint256) public investors;
+    mapping (uint256 => InvestData) private _InvestList;
 
     constructor (address _registry, address _product) public
     InterfaceModule(_registry, _product)
     {
         
     }
+    modifier checkGranularity(uint256 _amount) {
+        require(_amount % granularity == 0, "Unable to modify token balances at this granularity");
+        _;
+    }
+    
+    function changeGranularity(uint256 _granularity) public returns(bool) {
+        
+        require(_granularity != 0, "Granularity can not be 0");
+        
+        emit LogGranularityChanged(granularity, _granularity);
+        
+        granularity = _granularity;
 
+        return true;
+    }
     //TODO : 제어자 추가 컨피규어 설정값 변경
     function configure(
         uint256 _startTime,
@@ -82,6 +107,8 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard {
 
         _processInvest(_beneficiary, klays);
 
+        _forwardFunds();
+
         emit ProductInvest(msg.sender, _beneficiary, _investedAmount, klays);
 
     }
@@ -106,14 +133,29 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard {
 
         investors[_beneficiary] = investors[_beneficiary].add(_tokenAmount);
 
-        // _deliverProductStock(_beneficiary, _tokenAmount);
+        _deliverProductStock(_beneficiary, _tokenAmount);
+    }
+
+    function _forwardFunds() internal {
+        fundsWallet.transfer(msg.value);
     }
     
     // @TODO : ERC721로 해당 사용자에게 민트 시켜주는 것 구현하기 
-    // function _deliverProductStock(address _beneficiary, uint256 _tokenAmount) internal {
-            
-    //         return true;
-    // }
+    function _deliverProductStock(address _beneficiary, uint256 _tokenAmount) internal {
+            uint256 tokenId = totalSupply() + 1;
+
+            _mint(_beneficiary, tokenId);
+
+            address[] memory ownerHistory;
+
+            InvestData memory newData = InvestData(tokenId, ownerHistory, _tokenAmount, block.timestamp);
+
+            _InvestList[tokenId] = newData;
+            _InvestList[tokenId].ownerHistory.push(_beneficiary);
+
+            emit DeliveredStock(tokenId, _beneficiary, _tokenAmount);
+
+    }
 
     function getNumberInvestors() public view returns (uint256) {
         return investorCount;
@@ -125,5 +167,13 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard {
 
     function capReached() public view returns (bool) {
         return productSold >= cap;
+    }
+
+    function getType() public view returns(uint8) {
+        return 1;
+    }
+    
+    function getName() public view returns(bytes32) {
+        return "BasicInvestModule";
     }
 }
