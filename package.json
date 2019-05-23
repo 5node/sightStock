@@ -13,7 +13,8 @@
     "real": "ENV=REAL node ./frontserver.js webpack.prod.config.js --watch",
     "start": "ENV=REAL node ./frontserver.js webpack.prod.config.js --watch",
     "start:local": "ENV=LOCAL node ./frontserver.js webpack.prod.config.js --watch",
-    "build-contracts": "sol-merger \"./contracts/*/*.sol\" ./merged"
+    "build-contracts": "sol-merger \"./contracts/*/*.sol\" ./merged",
+    "build-contracts-module" : "sol-merger \"./contracts/*/*/*.sol\" ./merged"
   },
   "repository": {
     "type": "git"
