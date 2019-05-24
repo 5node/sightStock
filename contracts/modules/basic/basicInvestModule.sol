@@ -17,13 +17,14 @@ import "../../ERC721/ERC721Enumerable.sol";
 contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ERC721Enumerable {
     using SafeMath for uint256;
     
+    event ProductInvest(address indexed investor, address indexed beneficiary, uint256 value, uint256 amount);
     event DeliveredStock(uint256 tokenId, address indexed beneficiary, uint256 amount);
     event LogGranularityChanged(uint256 _oldGranularity, uint256 _newGranularity);
-    event ProductInvest(address indexed investor, address indexed beneficiary, uint256 value, uint256 amount);
+    event RegisterdBasicInvestConfig(address _from, address _wallet, uint256 _cap, uint256 _maxInvestors, uint256 _startTime, uint256 _endTime);
     
     struct InvestData {
         uint256 tokenId;
-        address[] ownerHistory;
+        address owner;
         uint256 amount;
         uint256 timeStamp;
     }
@@ -41,10 +42,10 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
     address public fundsWallet;
 
     mapping (address => uint256) public investors;
-    mapping (uint256 => InvestData) private _InvestList;
+    mapping (uint256 => InvestData) private investList;
 
-    constructor (address _registry, address _product) public
-    InterfaceModule(_registry, _product)
+    constructor (address _product, address _registry) public
+    InterfaceModule(_product, _registry)
     {
         
     }
@@ -53,6 +54,7 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
         _;
     }
     
+
     function changeGranularity(uint256 _granularity) public returns(bool) {
         
         require(_granularity != 0, "Granularity can not be 0");
@@ -63,24 +65,34 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
 
         return true;
     }
+    
     //TODO : 제어자 추가 컨피규어 설정값 변경
     function configure(
         uint256 _startTime,
         uint256 _endTime,
         uint256 _cap,
         uint256 _max_investors,
-        address _fundsReceiver
+        address _fundsReceiver,
+        address _from
     )
     public
+    onlyProduct
+    returns (bool)
     {
         require(_fundsReceiver != address(0), "Zero address is not permitted");
         require(_startTime >= now && _endTime > _startTime, "Date parameters are not valid");
         require(_cap > 0, "Cap should be greater than 0");
+        
         startTime = _startTime;
         endTime = _endTime;
         cap = _cap;
         fundsWallet = _fundsReceiver;
         max_investors = _max_investors;
+        
+        emit RegisterdBasicInvestConfig(_from, _fundsReceiver, _cap,  _max_investors, _startTime,  _endTime);
+        
+        return true;
+
     }
 
     function () external payable {
@@ -104,6 +116,8 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
 
         // update state
         fundsRaised = fundsRaised.add(_investedAmount);
+        
+        productSold = productSold.add(_investedAmount.mul(rate));
 
         _processInvest(_beneficiary, klays);
 
@@ -130,7 +144,7 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
         if (investors[_beneficiary] == 0) {
             investorCount = investorCount + 1;
         }
-
+    
         investors[_beneficiary] = investors[_beneficiary].add(_tokenAmount);
 
         _deliverProductStock(_beneficiary, _tokenAmount);
@@ -142,16 +156,16 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
     
     // @TODO : ERC721로 해당 사용자에게 민트 시켜주는 것 구현하기 
     function _deliverProductStock(address _beneficiary, uint256 _tokenAmount) internal {
+            
             uint256 tokenId = totalSupply() + 1;
 
             _mint(_beneficiary, tokenId);
+            
+            InvestData memory newData = InvestData(tokenId, _beneficiary, _tokenAmount, block.timestamp);
 
-            address[] memory ownerHistory;
-
-            InvestData memory newData = InvestData(tokenId, ownerHistory, _tokenAmount, block.timestamp);
-
-            _InvestList[tokenId] = newData;
-            _InvestList[tokenId].ownerHistory.push(_beneficiary);
+            investList[tokenId] = newData;
+            
+            investList[tokenId].owner = _beneficiary;
 
             emit DeliveredStock(tokenId, _beneficiary, _tokenAmount);
 
@@ -166,7 +180,7 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
     }
 
     function capReached() public view returns (bool) {
-        return productSold >= cap;
+        return fundsRaised >= cap;
     }
 
     function getType() public view returns(uint8) {

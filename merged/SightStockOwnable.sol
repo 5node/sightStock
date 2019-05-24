@@ -13,7 +13,7 @@ contract SightStockOwnable {
     }
 
     modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(msg.sender == owner, "is not owner");
         _;
     }
     function transferOwnership(address _newOwner) public onlyOwner {
@@ -21,7 +21,7 @@ contract SightStockOwnable {
     }
 
     function _transferOwnership(address _newOwner) internal {
-        require(_newOwner != address(0));
+        require(_newOwner != address(0), "is not address");
         emit OwnershipTransferred(owner, _newOwner);
         owner = _newOwner;
     }

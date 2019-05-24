@@ -16,7 +16,7 @@ import "../product/Product.sol";
 
 contract SigStockRegistry is InterfaceSigStockRegistry {
     
-    mapping(address => address) productOwner;
+    mapping(address => address[]) public creatorProducts;
     
     event CreatedProduct(address indexed _from, address indexed _product);
     event AddedCustomProduct(address indexed _from, address indexed _product);
@@ -30,22 +30,28 @@ contract SigStockRegistry is InterfaceSigStockRegistry {
     //     require(true == SIGSTOCK_ADMINS[msg.sender], "is not admin");
     //     _;
     // }
+    function getNumCreatorProduct(address _creator) public view returns(uint) {
+        
+        uint productNum = creatorProducts[_creator].length;
+        
+        return productNum;
+    }
 
     // 수동 추가
-    function addCustomProduct(address _productAddress) public onlyCreator returns (bool) {
+    function addCustomProduct(address _productAddress) public onlySigStockAdmin returns (bool) {
                 
-        productOwner[msg.sender] = _productAddress;
+        creatorProducts[msg.sender].push(_productAddress);
         emit AddedCustomProduct(msg.sender, _productAddress);
 
         return true;
     }
 
     // 자동 추가
-    function createProduct() public onlyCreator returns (address) {
+    function createProduct(string _title, string _description) public onlyCreator returns (address) {
         
-        Product product = new Product();
+        Product product = new Product(_title, _description);
 
-        productOwner[msg.sender] = address(product);
+        creatorProducts[msg.sender].push(address(product)); 
         
         Product(product).transferOwnership(msg.sender);
 

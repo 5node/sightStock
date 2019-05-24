@@ -134,7 +134,10 @@ contract InterfaceModule {
     // 프로덕트의 상품 창작자 제어자
 
     // 프로덕트 컨트랙트 제어자
-
+    modifier onlyProduct() {
+        require(msg.sender == sigStockProduct, "is not product");
+        _;
+    }
     // 프로덕트 투자자 제어자 (will go to InvestModule)
 
     // 프로덕트 구매자 제어자 (will go to PurchaseModule)
@@ -179,6 +182,17 @@ contract InterfaceInvestModule is InterfaceModule {
     
     function getRaisedKlay() public view returns (uint256);
 
+    function configure(
+        uint256 _startTime,
+        uint256 _endTime,
+        uint256 _cap,
+        uint256 _max_investors,
+        address _fundsReceiver,
+        address _from
+    )
+    public
+    returns (bool);
+
     function reclaimERC20(address _tokenContract) external onlyRegistryAdmin {
         
         require(_tokenContract != address(0),"is address(0)");
@@ -201,6 +215,16 @@ contract InterfaceInvestModule is InterfaceModule {
 
 contract InterfacePurchaseModule is InterfaceModule {
     
+    function configure(
+        uint256 _startTime, 
+        uint256 _endTime,  
+        address _fundsReceiver,
+        address _from
+        )
+    public returns (bool);
+
+    function getNumberPurchasers() public view returns (uint256);
+    
     function getRaisedKlay() public view returns (uint256);
 
     function reclaimERC20(address _tokenContract) external onlyRegistryAdmin {
@@ -213,7 +237,7 @@ contract InterfacePurchaseModule is InterfaceModule {
         require(token.transfer(msg.sender, balance), "fn:reclaimERC20 transfer error");
     }
     
-    function getNumberPurchasers() public view returns (uint256);
+    
 }
 
 library SafeMath {
@@ -275,7 +299,7 @@ contract SightStockOwnable {
     }
 
     modifier onlyOwner() {
-        require(msg.sender == owner);
+        require(msg.sender == owner, "is not owner");
         _;
     }
     function transferOwnership(address _newOwner) public onlyOwner {
@@ -283,7 +307,7 @@ contract SightStockOwnable {
     }
 
     function _transferOwnership(address _newOwner) internal {
-        require(_newOwner != address(0));
+        require(_newOwner != address(0), "is not address");
         emit OwnershipTransferred(owner, _newOwner);
         owner = _newOwner;
     }
@@ -299,8 +323,9 @@ contract Product is InterfaceProduct, SightStockOwnable {
     using SafeMath for uint256;
     
 
-    constructor() public {
-
+    constructor(string _title, string _description) public {
+        productTitle = _title;
+        productDescription = _description;
     }
 
     struct ModuleInfo {
@@ -364,7 +389,7 @@ contract Product is InterfaceProduct, SightStockOwnable {
     /**
     * @dev invest 모듈에서 해당 값을 불러온다. 
      */ 
-    function getInvestorsLength() public returns (uint256) {
+    function getInvestorsLength() public view returns (uint256) {
         uint256 investorsLength = InterfaceInvestModule(module[INVEST_KEY]).getNumberInvestors();
         return investorsLength;
 
@@ -374,7 +399,7 @@ contract Product is InterfaceProduct, SightStockOwnable {
     * @dev purchase 모듈에서 해당 값을 불러온다.
      */
 
-    function getPurchasersLength() public returns (uint256) {
+    function getPurchasersLength() public view returns (uint256) {
         uint256 purchasersLength = InterfacePurchaseModule(module[PURCHASE_KEY]).getNumberPurchasers();
          
         return purchasersLength;
@@ -395,7 +420,7 @@ contract Product is InterfaceProduct, SightStockOwnable {
         return true;
     }
     /**
-    * @ @dev 모듈 정보를 불러온다.
+    * @dev 모듈 정보를 불러온다.
      */
 
     function getModule(uint8 _moduleType, uint8 _moduleIndex) public view returns (bytes32, address) {
@@ -430,19 +455,29 @@ contract Product is InterfaceProduct, SightStockOwnable {
     }
     
     // @ TODO : 제어자 추가해야한다.
-    function setInvestConfigure(uint256 _startTime, uint256 _endTime, uint256 _cap, uint256 _max_investors, address _fundsReceiver, address _from)
+    function setInvestConfigure(
+        uint256 _startTime, 
+        uint256 _endTime, 
+        uint256 _cap, 
+        uint256 _max_investors, 
+        address _fundsReceiver)
     public onlyOwner returns (bool) {
         
-        // InterfaceInvestModule(module[INVEST_KEY]).configure(_startTime, _endTime, _cap, _max_investors, _fundsReceiver, _from);
+        InterfaceInvestModule(module[INVEST_KEY]).configure(_startTime, _endTime, _cap, _max_investors, _fundsReceiver, msg.sender);
 
         return true;
     }
 
     // @ TODO : 제어자 추가해야한다.
-    function setPurchaseConfigure(uint256 _startTime, uint256 _endTime, uint256 _cap, uint256 _max_Purchasers, address _fundsReceiver, address _from)
+    function setPurchaseConfigure(
+        uint256 _startTime, 
+        uint256 _endTime,  
+        address _fundsReceiver)
     public onlyOwner returns (bool) {
         
-        // InterfacePurchaseModule(module[INVEST_KEY]).configure();
+        InterfacePurchaseModule(module[PURCHASE_KEY]).configure(_startTime, _endTime, _fundsReceiver, msg.sender);
+        
+        return true;
     }
 
     function getRaiseKlayFromInvest() public view returns (uint256) {
@@ -474,7 +509,7 @@ contract Product is InterfaceProduct, SightStockOwnable {
 
 contract SigStockRegistry is InterfaceSigStockRegistry {
     
-    mapping(address => address) productOwner;
+    mapping(address => address[]) public creatorProducts;
     
     event CreatedProduct(address indexed _from, address indexed _product);
     event AddedCustomProduct(address indexed _from, address indexed _product);
@@ -488,22 +523,28 @@ contract SigStockRegistry is InterfaceSigStockRegistry {
     //     require(true == SIGSTOCK_ADMINS[msg.sender], "is not admin");
     //     _;
     // }
+    function getNumCreatorProduct(address _creator) public view returns(uint) {
+        
+        uint productNum = creatorProducts[_creator].length;
+        
+        return productNum;
+    }
 
     // 수동 추가
-    function addCustomProduct(address _productAddress) public onlyCreator returns (bool) {
+    function addCustomProduct(address _productAddress) public onlySigStockAdmin returns (bool) {
                 
-        productOwner[msg.sender] = _productAddress;
+        creatorProducts[msg.sender].push(_productAddress);
         emit AddedCustomProduct(msg.sender, _productAddress);
 
         return true;
     }
 
     // 자동 추가
-    function createProduct() public onlyCreator returns (address) {
+    function createProduct(string _title, string _description) public onlyCreator returns (address) {
         
-        Product product = new Product();
+        Product product = new Product(_title, _description);
 
-        productOwner[msg.sender] = address(product);
+        creatorProducts[msg.sender].push(address(product)); 
         
         Product(product).transferOwnership(msg.sender);
 

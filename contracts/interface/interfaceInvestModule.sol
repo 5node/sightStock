@@ -16,6 +16,17 @@ contract InterfaceInvestModule is InterfaceModule {
     
     function getRaisedKlay() public view returns (uint256);
 
+    function configure(
+        uint256 _startTime,
+        uint256 _endTime,
+        uint256 _cap,
+        uint256 _max_investors,
+        address _fundsReceiver,
+        address _from
+    )
+    public
+    returns (bool);
+
     function reclaimERC20(address _tokenContract) external onlyRegistryAdmin {
         
         require(_tokenContract != address(0),"is address(0)");

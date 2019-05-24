@@ -3,36 +3,51 @@ pragma solidity >=0.4.24;
 import "../../interface/InterfacePurchaseModule.sol";
 import "../../library/ReentrancyGuard.sol";
 import "../../library/SafeMath.sol";
+
 /**
 * @dev 기본적인 구매 모듈  ( 추후 구매자를 위한 )
 *
-* 
-* 
-* 
  */
 
 contract BasicPurchaseModule is InterfacePurchaseModule, ReentrancyGuard {
     using SafeMath for uint256;
-
+    event RegisterdBasicPurchaseConfig(address _from, address _wallet, uint256 _startTime, uint256 _endTime);
     event ProductPurchase(address indexed sigStockProduct, address indexed beneficiary, uint256 amount);
     event LogGranularityChanged(uint256 _oldGranularity, uint256 _newGranularity);
-    
-    struct PurchaseData {
-        address product;
-        address purchaser;
-        uint256 amount;
-        uint256 timeStamp;
-    }
 
     uint public granularity;
+    uint256 public purchaserCount;
     uint256 public productSold;
     address public fundsWallet;
-    uint256 public purchaserCount;
+    uint256 public startTime;
+    uint256 public endTime;
+
+    function configure(
+        uint256 _startTime,
+        uint256 _endTime,
+        address _fundsReceiver,
+        address _from
+    )
+    public
+    onlyProduct
+    returns (bool)
+    {
+        require(_fundsReceiver != address(0), "Zero address is not permitted");
+        require(_startTime >= now && _endTime > _startTime, "Date parameters are not valid");
+        startTime = _startTime;
+        endTime = _endTime;
+        fundsWallet = _fundsReceiver;
+        
+        emit RegisterdBasicPurchaseConfig(_from, _fundsReceiver, _startTime, _endTime);
+        
+        return true;
+
+    }
+
     mapping (address => uint256) public purchasers;
-    mapping (uint256 => PurchaseData) private _purchaseList;
     
-    constructor (address _registry, address _product) public
-    InterfaceModule(_registry, _product)
+    constructor (address _product, address _registry) public
+    InterfaceModule(_product, _registry)
     {
         
     }
@@ -40,8 +55,9 @@ contract BasicPurchaseModule is InterfacePurchaseModule, ReentrancyGuard {
     function () external payable {
         purchaseProduct(msg.sender);
     }
+
     modifier checkGranularity(uint256 _amount) {
-        require(_amount % granularity == 0, "Unable to modify token balances at this granularity");
+        require(granularity == _amount, "Unable to modify token balances at this granularity");
         _;
     }
     
@@ -56,7 +72,8 @@ contract BasicPurchaseModule is InterfacePurchaseModule, ReentrancyGuard {
         return true;
     }
 
-    function purchaseProduct(address _investor) public payable nonReentrant returns(bool) {
+    // msg.value와 granularity 값이 같아야 한다.
+    function purchaseProduct(address _investor) public payable nonReentrant checkGranularity(msg.value) returns (bool) {
         
         uint256 klayAmount = msg.value;
 
@@ -67,7 +84,7 @@ contract BasicPurchaseModule is InterfacePurchaseModule, ReentrancyGuard {
 
     function _processTx(address _beneficiary, uint256 _investedAmount) internal {
 
-        _preValidateInvest(_beneficiary, _investedAmount);
+        _preValidatePurchase(_beneficiary, _investedAmount);
         // calculate token amount to be created
         uint256 klays = _investedAmount;
 
@@ -82,9 +99,10 @@ contract BasicPurchaseModule is InterfacePurchaseModule, ReentrancyGuard {
 
     }
     
-    function _preValidateInvest(address _beneficiary, uint256 _investedAmount) internal view {
+    function _preValidatePurchase(address _beneficiary, uint256 _investedAmount)  internal pure  {
         require(_beneficiary != address(0), "Beneficiary address should not be 0x");
         require(_investedAmount != 0, "Amount invested should not be equal to 0");
+        
     }
     /**
     * @notice Executed when a purchase has been validated and is ready to be executed. Not necessarily emits/sends tokens.
@@ -96,9 +114,26 @@ contract BasicPurchaseModule is InterfacePurchaseModule, ReentrancyGuard {
         if (purchasers[_beneficiary] == 0) {
             purchaserCount = purchaserCount + 1;
         }
-
+        
         purchasers[_beneficiary] = purchasers[_beneficiary].add(_tokenAmount);
 
+    }
+
+    function isPurchaser(address _purchaser) public view returns (bool) {
+        
+        bool result = false;
+        if(purchasers[_purchaser] > 0) {
+            result = true;
+        }
+
+        return result;
+    }
+    function getNumberPurchasers() public view returns (uint256) {
+        return purchaserCount;
+    }
+
+    function getRaisedKlay() public view returns (uint256) {       
+        return productSold;
     }
 
     function _forwardFunds() internal {
@@ -109,9 +144,6 @@ contract BasicPurchaseModule is InterfacePurchaseModule, ReentrancyGuard {
         return 2;
     }
     
-    function getRaisedKlay() public view returns (uint256) {       
-        return productSold;
-    }
 
     function getName() public view returns(bytes32) {
         return "BasicPurchaseModule";

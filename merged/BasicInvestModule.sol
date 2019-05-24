@@ -75,7 +75,10 @@ contract InterfaceModule {
     // 프로덕트의 상품 창작자 제어자
 
     // 프로덕트 컨트랙트 제어자
-
+    modifier onlyProduct() {
+        require(msg.sender == sigStockProduct, "is not product");
+        _;
+    }
     // 프로덕트 투자자 제어자 (will go to InvestModule)
 
     // 프로덕트 구매자 제어자 (will go to PurchaseModule)
@@ -119,6 +122,17 @@ contract InterfaceInvestModule is InterfaceModule {
     function getNumberInvestors() public view returns (uint256);
     
     function getRaisedKlay() public view returns (uint256);
+
+    function configure(
+        uint256 _startTime,
+        uint256 _endTime,
+        uint256 _cap,
+        uint256 _max_investors,
+        address _fundsReceiver,
+        address _from
+    )
+    public
+    returns (bool);
 
     function reclaimERC20(address _tokenContract) external onlyRegistryAdmin {
         
@@ -883,51 +897,51 @@ contract ERC721Enumerable is ERC165, ERC721, IERC721Enumerable {
   }
 }
 
-// library SafeMath {
+library SafeMath {
 
-//   /**
-//   * @dev Multiplies two numbers, throws on overflow.
-//   */
-//   function mul(uint256 a, uint256 b) internal pure returns (uint256 c) {
-//     // Gas optimization: this is cheaper than asserting 'a' not being zero, but the
-//     // benefit is lost if 'b' is also tested.
-//     // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
-//     if (a == 0) {
-//       return 0;
-//     }
+  /**
+  * @dev Multiplies two numbers, throws on overflow.
+  */
+  function mul(uint256 a, uint256 b) internal pure returns (uint256 c) {
+    // Gas optimization: this is cheaper than asserting 'a' not being zero, but the
+    // benefit is lost if 'b' is also tested.
+    // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
+    if (a == 0) {
+      return 0;
+    }
 
-//     c = a * b;
-//     assert(c / a == b);
-//     return c;
-//   }
+    c = a * b;
+    assert(c / a == b);
+    return c;
+  }
 
-//   /**
-//   * @dev Integer division of two numbers, truncating the quotient.
-//   */
-//   function div(uint256 a, uint256 b) internal pure returns (uint256) {
-//     // assert(b > 0); // Solidity automatically throws when dividing by 0
-//     // uint256 c = a / b;
-//     // assert(a == b * c + a % b); // There is no case in which this doesn't hold
-//     return a / b;
-//   }
+  /**
+  * @dev Integer division of two numbers, truncating the quotient.
+  */
+  function div(uint256 a, uint256 b) internal pure returns (uint256) {
+    // assert(b > 0); // Solidity automatically throws when dividing by 0
+    // uint256 c = a / b;
+    // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+    return a / b;
+  }
 
-//   /**
-//   * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
-//   */
-//   function sub(uint256 a, uint256 b) internal pure returns (uint256) {
-//     assert(b <= a);
-//     return a - b;
-//   }
+  /**
+  * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
+  */
+  function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+    assert(b <= a);
+    return a - b;
+  }
 
-//   /**
-//   * @dev Adds two numbers, throws on overflow.
-//   */
-//   function add(uint256 a, uint256 b) internal pure returns (uint256 c) {
-//     c = a + b;
-//     assert(c >= a);
-//     return c;
-//   }
-// }
+  /**
+  * @dev Adds two numbers, throws on overflow.
+  */
+  function add(uint256 a, uint256 b) internal pure returns (uint256 c) {
+    c = a + b;
+    assert(c >= a);
+    return c;
+  }
+}
 
 // 
 
@@ -942,10 +956,10 @@ contract ERC721Enumerable is ERC165, ERC721, IERC721Enumerable {
 contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ERC721Enumerable {
     using SafeMath for uint256;
     
+    event ProductInvest(address indexed investor, address indexed beneficiary, uint256 value, uint256 amount);
     event DeliveredStock(uint256 tokenId, address indexed beneficiary, uint256 amount);
     event LogGranularityChanged(uint256 _oldGranularity, uint256 _newGranularity);
-    event ProductInvest(address indexed investor, address indexed beneficiary, uint256 value, uint256 amount);
-    
+    event RegisterdBasicInvestConfig(address _from, address _wallet, uint256 _cap, uint256 _maxInvestors, uint256 _startTime, uint256 _endTime);
     struct InvestData {
         uint256 tokenId;
         address[] ownerHistory;
@@ -968,8 +982,8 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
     mapping (address => uint256) public investors;
     mapping (uint256 => InvestData) private _InvestList;
 
-    constructor (address _registry, address _product) public
-    InterfaceModule(_registry, _product)
+    constructor (address _product, address _registry) public
+    InterfaceModule(_product, _registry)
     {
         
     }
@@ -978,6 +992,7 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
         _;
     }
     
+
     function changeGranularity(uint256 _granularity) public returns(bool) {
         
         require(_granularity != 0, "Granularity can not be 0");
@@ -988,24 +1003,34 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
 
         return true;
     }
+    
     //TODO : 제어자 추가 컨피규어 설정값 변경
     function configure(
         uint256 _startTime,
         uint256 _endTime,
         uint256 _cap,
         uint256 _max_investors,
-        address _fundsReceiver
+        address _fundsReceiver,
+        address _from
     )
     public
+    onlyProduct
+    returns (bool)
     {
         require(_fundsReceiver != address(0), "Zero address is not permitted");
         require(_startTime >= now && _endTime > _startTime, "Date parameters are not valid");
         require(_cap > 0, "Cap should be greater than 0");
+        
         startTime = _startTime;
         endTime = _endTime;
         cap = _cap;
         fundsWallet = _fundsReceiver;
         max_investors = _max_investors;
+        
+        emit RegisterdBasicInvestConfig(_from, _fundsReceiver, _cap,  _max_investors, _startTime,  _endTime);
+        
+        return true;
+
     }
 
     function () external payable {

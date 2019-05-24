@@ -13,6 +13,16 @@ import "../ERC20/ERC20Basic.sol";
 
 contract InterfacePurchaseModule is InterfaceModule {
     
+    function configure(
+        uint256 _startTime, 
+        uint256 _endTime,  
+        address _fundsReceiver,
+        address _from
+        )
+    public returns (bool);
+
+    function getNumberPurchasers() public view returns (uint256);
+    
     function getRaisedKlay() public view returns (uint256);
 
     function reclaimERC20(address _tokenContract) external onlyRegistryAdmin {
@@ -25,5 +35,5 @@ contract InterfacePurchaseModule is InterfaceModule {
         require(token.transfer(msg.sender, balance), "fn:reclaimERC20 transfer error");
     }
     
-    function getNumberPurchasers() public view returns (uint256);
+    
 }

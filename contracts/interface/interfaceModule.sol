@@ -28,7 +28,10 @@ contract InterfaceModule {
     // 프로덕트의 상품 창작자 제어자
 
     // 프로덕트 컨트랙트 제어자
-
+    modifier onlyProduct() {
+        require(msg.sender == sigStockProduct, "is not product");
+        _;
+    }
     // 프로덕트 투자자 제어자 (will go to InvestModule)
 
     // 프로덕트 구매자 제어자 (will go to PurchaseModule)

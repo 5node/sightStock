@@ -16,8 +16,9 @@ contract Product is InterfaceProduct, SightStockOwnable {
     using SafeMath for uint256;
     
 
-    constructor() public {
-
+    constructor(string _title, string _description) public {
+        productTitle = _title;
+        productDescription = _description;
     }
 
     struct ModuleInfo {
@@ -81,7 +82,7 @@ contract Product is InterfaceProduct, SightStockOwnable {
     /**
     * @dev invest 모듈에서 해당 값을 불러온다. 
      */ 
-    function getInvestorsLength() public returns (uint256) {
+    function getInvestorsLength() public view returns (uint256) {
         uint256 investorsLength = InterfaceInvestModule(module[INVEST_KEY]).getNumberInvestors();
         return investorsLength;
 
@@ -91,7 +92,7 @@ contract Product is InterfaceProduct, SightStockOwnable {
     * @dev purchase 모듈에서 해당 값을 불러온다.
      */
 
-    function getPurchasersLength() public returns (uint256) {
+    function getPurchasersLength() public view returns (uint256) {
         uint256 purchasersLength = InterfacePurchaseModule(module[PURCHASE_KEY]).getNumberPurchasers();
          
         return purchasersLength;
@@ -112,7 +113,7 @@ contract Product is InterfaceProduct, SightStockOwnable {
         return true;
     }
     /**
-    * @ @dev 모듈 정보를 불러온다.
+    * @dev 모듈 정보를 불러온다.
      */
 
     function getModule(uint8 _moduleType, uint8 _moduleIndex) public view returns (bytes32, address) {
@@ -147,19 +148,29 @@ contract Product is InterfaceProduct, SightStockOwnable {
     }
     
     // @ TODO : 제어자 추가해야한다.
-    function setInvestConfigure(uint256 _startTime, uint256 _endTime, uint256 _cap, uint256 _max_investors, address _fundsReceiver, address _from)
+    function setInvestConfigure(
+        uint256 _startTime, 
+        uint256 _endTime, 
+        uint256 _cap, 
+        uint256 _max_investors, 
+        address _fundsReceiver)
     public onlyOwner returns (bool) {
         
-        // InterfaceInvestModule(module[INVEST_KEY]).configure(_startTime, _endTime, _cap, _max_investors, _fundsReceiver, _from);
+        InterfaceInvestModule(module[INVEST_KEY]).configure(_startTime, _endTime, _cap, _max_investors, _fundsReceiver, msg.sender);
 
         return true;
     }
 
     // @ TODO : 제어자 추가해야한다.
-    function setPurchaseConfigure(uint256 _startTime, uint256 _endTime, uint256 _cap, uint256 _max_Purchasers, address _fundsReceiver, address _from)
+    function setPurchaseConfigure(
+        uint256 _startTime, 
+        uint256 _endTime,  
+        address _fundsReceiver)
     public onlyOwner returns (bool) {
         
-        // InterfacePurchaseModule(module[INVEST_KEY]).configure();
+        InterfacePurchaseModule(module[PURCHASE_KEY]).configure(_startTime, _endTime, _fundsReceiver, msg.sender);
+        
+        return true;
     }
 
     function getRaiseKlayFromInvest() public view returns (uint256) {
