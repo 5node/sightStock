@@ -56,6 +56,8 @@ contract InterfaceDivideModule is InterfaceModule {
 
     function invest(address _from) public payable returns (bool); 
 
+    function invest2(address _from, uint256 _value) public payable returns (bool); 
+
     function purchase(address _from) public payable returns(bool);
     
     //onlyCreator // onlyClearedMission 

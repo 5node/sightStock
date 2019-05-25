@@ -45,11 +45,13 @@ contract SigStockRegistry is InterfaceSigStockRegistry {
 
         return true;
     }
-
     // 자동 추가
-    function createProduct(string _title, string _description) public onlyCreator returns (address) {
+    function createProduct(string _title, string _description, uint256 _creatorRate, uint256 _maxDivideValue) 
+    public 
+    onlyCreator 
+    returns (address) {
         
-        Product product = new Product(_title, _description);
+        Product product = new Product(_title, _description, _creatorRate, _maxDivideValue);
 
         creatorProducts[msg.sender].push(address(product)); 
         

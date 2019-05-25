@@ -4,8 +4,7 @@ import "../../interface/InterfaceInvestModule.sol";
 import "../../library/ReentrancyGuard.sol";
 import "../../ERC721/ERC721.sol";
 import "../../ERC721/ERC721Enumerable.sol";
-// import "../../library/SafeMath.sol";
-
+import "../../interface/InterfaceDivideModule.sol";
 /**
 * @dev 기본적인 투자 모듈 ( 투자자를 위한 )
 *
@@ -124,7 +123,14 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
     }
 
     function _forwardFunds() internal {
-        fundsWallet.transfer(msg.value);
+        
+        address divideModule = InterfaceProduct(sigStockProduct).module(DIVIDE_KEY);
+        
+        InterfaceDivideModule(divideModule).invest(msg.sender);
+
+        // InterfaceDivideModule(divideModule).invest2(msg.sender, msg.value);
+
+        
     }
     
     // @TODO : ERC721로 해당 사용자에게 민트 시켜주는 것 구현하기 
@@ -137,8 +143,6 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
             InvestData memory newData = InvestData(tokenId, _beneficiary, _tokenAmount, block.timestamp);
 
             investList[tokenId] = newData;
-            
-            investList[tokenId].owner = _beneficiary;
 
             emit DeliveredStock(tokenId, _beneficiary, _tokenAmount);
 

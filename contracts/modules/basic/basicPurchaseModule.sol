@@ -3,7 +3,7 @@ pragma solidity >=0.4.24;
 import "../../interface/InterfacePurchaseModule.sol";
 import "../../library/ReentrancyGuard.sol";
 import "../../library/SafeMath.sol";
-
+import "../../interface/InterfaceDivideModule.sol";
 /**
 * @dev 기본적인 구매 모듈  ( 추후 구매자를 위한 )
 *
@@ -137,8 +137,12 @@ contract BasicPurchaseModule is InterfacePurchaseModule, ReentrancyGuard {
     }
 
     function _forwardFunds() internal {
-        fundsWallet.transfer(msg.value);
+        address divideModule = InterfaceProduct(sigStockProduct).module(DIVIDE_KEY);
+        
+        InterfaceDivideModule(divideModule).purchase(msg.sender);
+        
     }
+    
 
     function getType() public view returns(uint8) {
         return 2;

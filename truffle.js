@@ -72,6 +72,11 @@ const PRIVATE_KEY = '0x48f5a77dbf13b436ae0325ae91efd084430d2da1123a8c273d7df5009
  * @param {string} gas - Upper limit of gas for deploying.
  */
 module.exports = {
+  compilers: {
+    solc: {
+      version: "0.4.24"  // ex:  "0.4.20". (Default: Truffle's installed solc)
+    }
+  },
   networks: {
     /**
      * DEPLOY METHOD 1: By private key.
@@ -83,7 +88,14 @@ module.exports = {
       gas: GASLIMIT,
       gasPrice: null,
     },
-
+    ganache: {
+      host: "127.0.0.1",     // Localhost (default: none)
+      port: 7545,            // Standard Ethereum port (default: none)
+      network_id: "*",       // Any network (default: none)
+      //  gas: 90000000,
+      gas: 0xfffffffffffff,
+      gasPrice: 20000000000,
+    },
     /**
      * DEPLOY METHOD 2: By unlocked account
      */
@@ -95,5 +107,6 @@ module.exports = {
     //   gas: GASLIMIT,
     //   gasPrice: null,
     // },
+
   },
 }

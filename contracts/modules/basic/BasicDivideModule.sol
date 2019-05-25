@@ -32,7 +32,20 @@ contract BasicDivideModule is InterfaceDivideModule {
         
         invested[Wallet] += msg.value;
 
+        Wallet.transfer(msg.value);
+
         emit Invested(_from, msg.value, block.timestamp);
+
+        return true;
+    }
+
+    function invest2(address _from, uint256 _value) public payable returns(bool) {
+        
+        invested[Wallet] += _value;
+        
+        Wallet.transfer(msg.value);
+        
+        emit Invested(_from, _value, block.timestamp);
 
         return true;
     }
@@ -89,7 +102,7 @@ contract BasicDivideModule is InterfaceDivideModule {
         //4. 구매해서 벌어들인 금액을 소유권 비율대로 나눠분배한다.
         uint klay = 10 ether * rate.div(creatorRate);
         
-        address investModule = InterfaceProduct(sigStockProduct).module(1);
+        address investModule = InterfaceProduct(sigStockProduct).module(INVEST_KEY);
         //cap이 1000KLAY인 경우
         uint256 _cap = InterfaceInvestModule(investModule).cap();
         //투자금액이 50KLAY인 경우

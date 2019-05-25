@@ -15,6 +15,10 @@ contract InterfaceModule {
     address public sigStockProduct;
     address public sigStockRegistry;
     
+    uint8 public constant INVEST_KEY = 1;
+    uint8 public constant PURCHASE_KEY = 2;
+    uint8 public constant DIVIDE_KEY = 3;
+
     constructor (address _product, address _registry) public {
         sigStockProduct = _product;
         sigStockRegistry = _registry;

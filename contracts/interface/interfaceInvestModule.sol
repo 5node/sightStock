@@ -37,7 +37,7 @@ contract InterfaceInvestModule is InterfaceModule {
     address public fundsWallet;
 
     mapping (address => uint256) public investors;
-    mapping (uint256 => InvestData) private investList;
+    mapping (uint256 => InvestData) public investList;
 
     function getNumberInvestors() public view returns (uint256);
     

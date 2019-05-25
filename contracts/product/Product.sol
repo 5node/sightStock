@@ -17,8 +17,8 @@ contract Product is InterfaceProduct {
     
 
     constructor(string _title, string _description, uint256 _creatorRate, uint256 _maxDivideValue) public {
-        require(2 * 1 ether >= _creatorRate * 1 ether, "it is exceeded of value [creatorRate]");
-        require(_creatorRate % 1 ether == 0,"granularity check");
+        require(2 ether >= _creatorRate * 1 ether , "it is exceeded of value [creatorRate]");
+        require(_creatorRate * 1 ether % 1 ether == 0,"granularity check");
         
         productTitle = _title;
         productDescription = _description;
@@ -73,7 +73,8 @@ contract Product is InterfaceProduct {
         require(_num != 0, "fn:deleteContent - _num is 0");
         
         productItems[_num] = ContentData("","","","","",0);
-
+        contentCount--;
+        
         return true;
     }
 
