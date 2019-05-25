@@ -16,33 +16,6 @@ import "../../ERC721/ERC721Enumerable.sol";
 
 contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ERC721Enumerable {
     using SafeMath for uint256;
-    
-    event ProductInvest(address indexed investor, address indexed beneficiary, uint256 value, uint256 amount);
-    event DeliveredStock(uint256 tokenId, address indexed beneficiary, uint256 amount);
-    event LogGranularityChanged(uint256 _oldGranularity, uint256 _newGranularity);
-    event RegisterdBasicInvestConfig(address _from, address _wallet, uint256 _cap, uint256 _maxInvestors, uint256 _startTime, uint256 _endTime);
-    
-    struct InvestData {
-        uint256 tokenId;
-        address owner;
-        uint256 amount;
-        uint256 timeStamp;
-    }
-    uint public granularity;
-    uint public constant rate = 1;
-    uint256 public investorCount;
-    uint256 public productSold;
-    uint256 public fundsRaised;
-    
-    //configure 설정 값
-    uint public startTime;
-    uint public endTime;
-    uint256 public cap;
-    uint256 public max_investors;
-    address public fundsWallet;
-
-    mapping (address => uint256) public investors;
-    mapping (uint256 => InvestData) private investList;
 
     constructor (address _product, address _registry) public
     InterfaceModule(_product, _registry)

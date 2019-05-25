@@ -1,5 +1,5 @@
 pragma solidity >=0.4.24;
-
+import "../permission/SightStockOwnable.sol";
 /**
 * @dev 기초 작품 인터페이스
 * 1. 
@@ -9,7 +9,7 @@ pragma solidity >=0.4.24;
  */
 
 
-contract InterfaceProduct {
+contract InterfaceProduct is SightStockOwnable {
 
     /**
      * @param content_key : 오프체인 해시 값
@@ -33,6 +33,8 @@ contract InterfaceProduct {
     mapping(uint8 => address) public module;
     
     //기초 정보
+    uint256 public maxDivideValue;
+    uint256 public creatorRate;
     uint8 public contentCount;
     string public productTitle;
     string public productDescription;

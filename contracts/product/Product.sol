@@ -5,20 +5,25 @@ import "../interface/InterfaceInvestModule.sol";
 import "../interface/InterfacePurchaseModule.sol";
 import "../library/SafeMath.sol";
 import "../interface/InterfaceSigStockRegistry.sol";
-import "../permission/SightStockOwnable.sol";
+
 /**
 *
 *		
  */
 //인베스트 왈렛은 창작가에게 귀속된다.
 //비율에 따라 구매 왈렛은 창작가 + 투자자에게 귀속된다. 
-contract Product is InterfaceProduct, SightStockOwnable {
+contract Product is InterfaceProduct {
     using SafeMath for uint256;
     
 
-    constructor(string _title, string _description) public {
+    constructor(string _title, string _description, uint256 _creatorRate, uint256 _maxDivideValue) public {
+        require(2 * 1 ether >= _creatorRate * 1 ether, "it is exceeded of value [creatorRate]");
+        require(_creatorRate % 1 ether == 0,"granularity check");
+        
         productTitle = _title;
         productDescription = _description;
+        creatorRate = _creatorRate * 1 ether;
+        maxDivideValue = _maxDivideValue * 1 ether;
     }
 
     struct ModuleInfo {

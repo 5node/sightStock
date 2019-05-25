@@ -1,6 +1,7 @@
 pragma solidity >=0.4.24;
 
 import "./InterfaceSigStockRegistry.sol";
+import "./InterfaceProduct.sol";
 /**
 * @dev 기초 모듈 인터페이스
 *
@@ -26,7 +27,11 @@ contract InterfaceModule {
     }
 
     // 프로덕트의 상품 창작자 제어자
+    modifier onlyProductOwner() {
 
+        require(msg.sender == InterfaceProduct(sigStockProduct).owner(), "msg.sender is not owner");
+        _;
+    }
     // 프로덕트 컨트랙트 제어자
     modifier onlyProduct() {
         require(msg.sender == sigStockProduct, "is not product");
