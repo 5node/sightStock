@@ -218,7 +218,7 @@ contract InterfaceInvestModule is InterfaceModule {
     event ProductInvest(address indexed investor, address indexed beneficiary, uint256 value, uint256 amount);
     event DeliveredStock(uint256 tokenId, address indexed beneficiary, uint256 amount);
     event LogGranularityChanged(uint256 _oldGranularity, uint256 _newGranularity);
-    event RegisterdBasicInvestConfig(address _from, address _wallet, uint256 _cap, uint256 _maxInvestors, uint256 _startTime, uint256 _endTime);
+    event RegisterdBasicInvestConfig(address _from, uint256 _cap, uint256 _maxInvestors, uint256 _startTime, uint256 _endTime);
     
     struct InvestData {
         uint256 tokenId;
@@ -237,7 +237,6 @@ contract InterfaceInvestModule is InterfaceModule {
     uint public endTime;
     uint256 public cap;
     uint256 public max_investors;
-    address public fundsWallet;
 
     mapping (address => uint256) public investors;
     mapping (uint256 => InvestData) public investList;
@@ -251,7 +250,6 @@ contract InterfaceInvestModule is InterfaceModule {
         uint256 _endTime,
         uint256 _cap,
         uint256 _max_investors,
-        address _fundsReceiver,
         address _from
     )
     public
@@ -417,7 +415,8 @@ contract Product is InterfaceProduct {
         require(_num != 0, "fn:deleteContent - _num is 0");
         
         productItems[_num] = ContentData("","","","","",0);
-
+        contentCount--;
+        
         return true;
     }
 
@@ -501,11 +500,10 @@ contract Product is InterfaceProduct {
         uint256 _startTime, 
         uint256 _endTime, 
         uint256 _cap, 
-        uint256 _max_investors, 
-        address _fundsReceiver)
+        uint256 _max_investors)
     public onlyOwner returns (bool) {
         
-        InterfaceInvestModule(module[INVEST_KEY]).configure(_startTime, _endTime, _cap, _max_investors, _fundsReceiver, msg.sender);
+        InterfaceInvestModule(module[INVEST_KEY]).configure(_startTime, _endTime, _cap, _max_investors, msg.sender);
 
         return true;
     }

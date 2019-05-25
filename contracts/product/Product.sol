@@ -17,13 +17,11 @@ contract Product is InterfaceProduct {
     
 
     constructor(string _title, string _description, uint256 _creatorRate, uint256 _maxDivideValue) public {
-        require(2 ether >= _creatorRate * 1 ether , "it is exceeded of value [creatorRate]");
-        require(_creatorRate * 1 ether % 1 ether == 0,"granularity check");
-        
+
         productTitle = _title;
         productDescription = _description;
-        creatorRate = _creatorRate * 1 ether;
-        maxDivideValue = _maxDivideValue * 1 ether;
+        creatorRate = _creatorRate;
+        maxDivideValue = _maxDivideValue;
     }
 
     struct ModuleInfo {
@@ -158,11 +156,10 @@ contract Product is InterfaceProduct {
         uint256 _startTime, 
         uint256 _endTime, 
         uint256 _cap, 
-        uint256 _max_investors, 
-        address _fundsReceiver)
+        uint256 _max_investors)
     public onlyOwner returns (bool) {
         
-        InterfaceInvestModule(module[INVEST_KEY]).configure(_startTime, _endTime, _cap, _max_investors, _fundsReceiver, msg.sender);
+        InterfaceInvestModule(module[INVEST_KEY]).configure(_startTime, _endTime, _cap, _max_investors, msg.sender);
 
         return true;
     }

@@ -13,7 +13,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x01d84c42"
     },
     {
       "constant": true,
@@ -32,7 +33,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x01ffc9a7"
     },
     {
       "constant": true,
@@ -51,7 +53,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x081812fc"
     },
     {
       "constant": false,
@@ -69,7 +72,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x095ea7b3"
     },
     {
       "constant": true,
@@ -83,7 +87,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x0cc72f07"
     },
     {
       "constant": true,
@@ -97,7 +102,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x18160ddd"
     },
     {
       "constant": true,
@@ -111,7 +117,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x2194f3a2"
     },
     {
       "constant": false,
@@ -133,7 +140,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x23b872dd"
     },
     {
       "constant": true,
@@ -147,7 +155,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x2c4e722e"
     },
     {
       "constant": true,
@@ -170,7 +179,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x2f745c59"
     },
     {
       "constant": true,
@@ -184,7 +194,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3197cbb6"
     },
     {
       "constant": true,
@@ -198,7 +209,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x355274ea"
     },
     {
       "constant": false,
@@ -220,7 +232,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x42842e0e"
     },
     {
       "constant": true,
@@ -251,7 +264,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x49d32471"
     },
     {
       "constant": true,
@@ -270,7 +284,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x4f6ccce7"
     },
     {
       "constant": true,
@@ -284,7 +299,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x556f0dc7"
     },
     {
       "constant": true,
@@ -303,7 +319,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x6352211e"
     },
     {
       "constant": true,
@@ -317,7 +334,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x6681b9fd"
     },
     {
       "constant": true,
@@ -336,7 +354,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x6f7bc9be"
     },
     {
       "constant": true,
@@ -355,7 +374,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x70a08231"
     },
     {
       "constant": true,
@@ -369,7 +389,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x78e97925"
     },
     {
       "constant": false,
@@ -383,7 +404,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8905fd4f"
     },
     {
       "constant": false,
@@ -401,7 +423,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xa22cb465"
     },
     {
       "constant": true,
@@ -415,7 +438,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xad92f777"
     },
     {
       "constant": true,
@@ -429,7 +453,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xb363eade"
     },
     {
       "constant": true,
@@ -443,7 +468,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xb785e052"
     },
     {
       "constant": false,
@@ -469,7 +495,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xb88d4fde"
     },
     {
       "constant": true,
@@ -483,7 +510,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xd3efbdc3"
     },
     {
       "constant": true,
@@ -497,7 +525,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xd7e64c00"
     },
     {
       "constant": true,
@@ -520,7 +549,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xe985e9c5"
     },
     {
       "constant": true,
@@ -534,7 +564,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xff91a68d"
     },
     {
       "inputs": [
@@ -549,7 +580,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "constructor",
+      "signature": "constructor"
     },
     {
       "payable": true,
@@ -576,7 +608,8 @@
         }
       ],
       "name": "Transfer",
-      "type": "event"
+      "type": "event",
+      "signature": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
     },
     {
       "anonymous": false,
@@ -598,7 +631,8 @@
         }
       ],
       "name": "Approval",
-      "type": "event"
+      "type": "event",
+      "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
     },
     {
       "anonymous": false,
@@ -620,7 +654,8 @@
         }
       ],
       "name": "ApprovalForAll",
-      "type": "event"
+      "type": "event",
+      "signature": "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31"
     },
     {
       "anonymous": false,
@@ -647,7 +682,8 @@
         }
       ],
       "name": "ProductInvest",
-      "type": "event"
+      "type": "event",
+      "signature": "0xa5eb1cf2e5e2a197b50f7b9efc4b2b3daa5b4572dfdbe85803146aae61aed6c8"
     },
     {
       "anonymous": false,
@@ -669,7 +705,8 @@
         }
       ],
       "name": "DeliveredStock",
-      "type": "event"
+      "type": "event",
+      "signature": "0xdaf6133cf950f107c06abec62e95e039240111af248cf1d6cd814b0f0229b47e"
     },
     {
       "anonymous": false,
@@ -686,7 +723,8 @@
         }
       ],
       "name": "LogGranularityChanged",
-      "type": "event"
+      "type": "event",
+      "signature": "0xd13c95c3e8cd875fc20a3da70637bcd9e053e0414035532577769470649507dc"
     },
     {
       "anonymous": false,
@@ -723,7 +761,8 @@
         }
       ],
       "name": "RegisterdBasicInvestConfig",
-      "type": "event"
+      "type": "event",
+      "signature": "0x751f4a8b918543954909540580faa16627161dede05a02cfb029fe1707f67859"
     },
     {
       "constant": false,
@@ -742,7 +781,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x210a8d0e"
     },
     {
       "constant": false,
@@ -781,7 +821,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x471195c6"
     },
     {
       "constant": false,
@@ -800,7 +841,8 @@
       ],
       "payable": true,
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xc42e5d53"
     },
     {
       "constant": true,
@@ -814,7 +856,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x38c59de9"
     },
     {
       "constant": true,
@@ -828,7 +871,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x43755beb"
     },
     {
       "constant": true,
@@ -842,7 +886,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x4f935945"
     },
     {
       "constant": true,
@@ -856,7 +901,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x15dae03e"
     },
     {
       "constant": true,
@@ -870,7 +916,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x17d7de7c"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.4.24+commit.e67f0147\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"PURCHASE_KEY\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getApproved\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"sigStockRegistry\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getType\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getName\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_granularity\",\"type\":\"uint256\"}],\"name\":\"changeGranularity\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"fundsWallet\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rate\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"tokenOfOwnerByIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"endTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"cap\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumberInvestors\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getRaisedKlay\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_startTime\",\"type\":\"uint256\"},{\"name\":\"_endTime\",\"type\":\"uint256\"},{\"name\":\"_cap\",\"type\":\"uint256\"},{\"name\":\"_max_investors\",\"type\":\"uint256\"},{\"name\":\"_fundsReceiver\",\"type\":\"address\"},{\"name\":\"_from\",\"type\":\"address\"}],\"name\":\"configure\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"investList\",\"outputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"timeStamp\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"tokenByIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"capReached\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"granularity\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"fundsRaised\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"investors\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"startTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_tokenContract\",\"type\":\"address\"}],\"name\":\"reclaimERC20\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setApprovalForAll\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"max_investors\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"sigStockProduct\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"productSold\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"tokenId\",\"type\":\"uint256\"},{\"name\":\"_data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_investor\",\"type\":\"address\"}],\"name\":\"investProduct\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"DIVIDE_KEY\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"investorCount\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"isApprovedForAll\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"INVEST_KEY\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_product\",\"type\":\"address\"},{\"name\":\"_registry\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"approved\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovalForAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"investor\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"beneficiary\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"ProductInvest\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"name\":\"beneficiary\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"DeliveredStock\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_oldGranularity\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_newGranularity\",\"type\":\"uint256\"}],\"name\":\"LogGranularityChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_wallet\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"_cap\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_maxInvestors\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_startTime\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"_endTime\",\"type\":\"uint256\"}],\"name\":\"RegisterdBasicInvestConfig\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"approve(address,uint256)\":{\"details\":\"Approves another address to transfer the given token ID The zero address indicates there is no approved address. There can only be one approved address per token at a given time. Can only be called by the token owner or an approved operator.\",\"params\":{\"to\":\"address to be approved for the given token ID\",\"tokenId\":\"uint256 ID of the token to be approved\"}},\"balanceOf(address)\":{\"details\":\"Gets the balance of the specified address\",\"params\":{\"owner\":\"address to query the balance of\"},\"return\":\"uint256 representing the amount owned by the passed address\"},\"getApproved(uint256)\":{\"details\":\"Gets the approved address for a token ID, or zero if no address set Reverts if the token ID does not exist.\",\"params\":{\"tokenId\":\"uint256 ID of the token to query the approval of\"},\"return\":\"address currently approved for the given token ID\"},\"isApprovedForAll(address,address)\":{\"details\":\"Tells whether an operator is approved by a given owner\",\"params\":{\"operator\":\"operator address which you want to query the approval of\",\"owner\":\"owner address which you want to query the approval of\"},\"return\":\"bool whether the given operator is approved by the given owner\"},\"ownerOf(uint256)\":{\"details\":\"Gets the owner of the specified token ID\",\"params\":{\"tokenId\":\"uint256 ID of the token to query the owner of\"},\"return\":\"owner address currently marked as the owner of the given token ID\"},\"safeTransferFrom(address,address,uint256)\":{\"details\":\"Safely transfers the ownership of a given token ID to another address If the target address is a contract, it must implement `onERC721Received`, which is called upon a safe transfer, and return the magic value `bytes4(keccak256(\\\"onERC721Received(address,address,uint256,bytes)\\\"))`; otherwise, the transfer is reverted.   * Requires the msg sender to be the owner, approved, or operator\",\"params\":{\"from\":\"current owner of the token\",\"to\":\"address to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}},\"safeTransferFrom(address,address,uint256,bytes)\":{\"details\":\"Safely transfers the ownership of a given token ID to another address If the target address is a contract, it must implement `onERC721Received`, which is called upon a safe transfer, and return the magic value `bytes4(keccak256(\\\"onERC721Received(address,address,uint256,bytes)\\\"))`; otherwise, the transfer is reverted. Requires the msg sender to be the owner, approved, or operator\",\"params\":{\"_data\":\"bytes data to send along with a safe transfer check\",\"from\":\"current owner of the token\",\"to\":\"address to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}},\"setApprovalForAll(address,bool)\":{\"details\":\"Sets or unsets the approval of a given operator An operator is allowed to transfer all tokens of the sender on their behalf\",\"params\":{\"approved\":\"representing the status of the approval to be set\",\"to\":\"operator address to set the approval\"}},\"supportsInterface(bytes4)\":{\"details\":\"implement supportsInterface(bytes4) using a lookup table\"},\"tokenByIndex(uint256)\":{\"details\":\"Gets the token ID at a given index of all the tokens in this contract Reverts if the index is greater or equal to the total number of tokens\",\"params\":{\"index\":\"uint256 representing the index to be accessed of the tokens list\"},\"return\":\"uint256 token ID at the given index of the tokens list\"},\"tokenOfOwnerByIndex(address,uint256)\":{\"details\":\"Gets the token ID at a given index of the tokens list of the requested owner\",\"params\":{\"index\":\"uint256 representing the index to be accessed of the requested tokens list\",\"owner\":\"address owning the tokens list to be accessed\"},\"return\":\"uint256 token ID at the given index of the tokens list owned by the requested address\"},\"totalSupply()\":{\"details\":\"Gets the total amount of tokens stored by the contract\",\"return\":\"uint256 representing the total amount of tokens\"},\"transferFrom(address,address,uint256)\":{\"details\":\"Transfers the ownership of a given token ID to another address Usage of this method is discouraged, use `safeTransferFrom` whenever possible Requires the msg sender to be the owner, approved, or operator\",\"params\":{\"from\":\"current owner of the token\",\"to\":\"address to receive the ownership of the given token ID\",\"tokenId\":\"uint256 ID of the token to be transferred\"}}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/modules/basic/BasicInvestModule.sol\":\"BasicInvestModule\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC20/ERC20Basic.sol\":{\"keccak256\":\"0x2869dac1f0baa65d84618e5b370ef4eeacac3b8c98bc8b52edc48e45c50c9dcc\",\"urls\":[\"bzzr://8228cc988b358b1c2cb5b9949ca232513decfb0e7e020e2993df1f95bc79dc9b\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/Address.sol\":{\"keccak256\":\"0xca801bd2d5d764e9f245b69d6a01cd08e1884daef13abf34f95cb6d921f9860e\",\"urls\":[\"bzzr://224784dbf4b6efec577efccc0f1713b0f4dca878b7930ca0b819316054656143\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/ERC165.sol\":{\"keccak256\":\"0x4b7afe6f95236ed0194bb9c00175821af7a10247aebb61fbf87a3f91b71417e8\",\"urls\":[\"bzzr://1198bd8d76d65bedfa02a8c82a17329d5eabdd1f1fe9b7611755d847c514621c\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/ERC721.sol\":{\"keccak256\":\"0xff9a70a2cab6935f422700048af0551a00a5d615b518ada8be2d724cb77e07c1\",\"urls\":[\"bzzr://ec653c79b72494960a7cd5e33a2116739bcb645b4611ab85c5f0ffd762522f3c\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/ERC721Enumerable.sol\":{\"keccak256\":\"0xb6726b8e8be8b37e84cbbfd82b0474f32a8a230697d12139f75130e888c5cf71\",\"urls\":[\"bzzr://991eb7a55c8816128185cd7b4fd0f5b7923d2da74df4c8ab0a508e50d1c60c8e\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/IERC165.sol\":{\"keccak256\":\"0x7b56777abad551b0d6f2644d9a45ee2c33fa1fdbb39783afc5d080c6009cadd5\",\"urls\":[\"bzzr://f92df08157533aebd638fec5dca9e51e64daba1194eab298ad498832b5267819\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/IERC721.sol\":{\"keccak256\":\"0x2be6553115577f05168997a83dc939c1d8c57c21bc220705611024ef8b6fe9fc\",\"urls\":[\"bzzr://6406c80a010892ca6ad3d7ad33d7c7859fa1e2b69a36f3905e657105fc2663f8\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/IERC721Enumerable.sol\":{\"keccak256\":\"0xea0a8b16496c47718644f6b256384c7677c2651982e2dee958d3b9c6645db958\",\"urls\":[\"bzzr://d6d29e29061b408e7fd993316eea24331429aa3f43a3c396884fd65a2e17a010\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0xa46160d26ec4883c6f92cc728676ba9ddcdfb108b2d4851b1ddb46dc384ecef2\",\"urls\":[\"bzzr://4fdfcbd36d61919d06c43640295802230c0bcebb304b2bd531c65458f33d1a0e\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC721/SafeMath.sol\":{\"keccak256\":\"0xdd18f05c74536a06166c90a17ec3c6932853764f292bed314ceb23e730ff83af\",\"urls\":[\"bzzr://1d8a608339978ac18782f7051816cf23b4072d8814979e3ef74788cc6025cca0\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceDivideModule.sol\":{\"keccak256\":\"0xb14715b4a388fef03bb50a9e3718f4f8b692a2b7111da3101a2758f4fffcb40e\",\"urls\":[\"bzzr://60a067cf29d6d60388c1505b4a0010c479fa96a920e9c69931b3f7b84fc8cbfb\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceInvestModule.sol\":{\"keccak256\":\"0x950d1bfced6108634f3daff01f7197cb346453230025304dbd7cfc19a403f3e9\",\"urls\":[\"bzzr://b0940be88e6a3dc1ed80dd92f43937dfe02931bf379ae2ef6e9d00958db90e6e\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceModule.sol\":{\"keccak256\":\"0xd26adf02a6eb81dd1313fe01fff25c440060e0377d7227aa53e9103b06cffacf\",\"urls\":[\"bzzr://90f1b5fe0d88f9401d5a2779a5eee79905410997c7b823efb1ba2abb655624f7\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceProduct.sol\":{\"keccak256\":\"0x708bb96ac7bcf28871f31f9f632b31d06313d25889ca1af4aa19d3548fc40d6a\",\"urls\":[\"bzzr://7e1cc058845450b283c7ef589206e89b90ed9b000d22304034ac89f99b5496d7\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceSigStockRegistry.sol\":{\"keccak256\":\"0x7d55d94a586b54a5eaa31925fa4172d401cc7d98f788fc5c5a101e2905c04325\",\"urls\":[\"bzzr://99f26646c4c04d482a49ac862f3f7c6cea88a8ba5185faeeb2e58c11581fe4c7\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/library/ReentrancyGuard.sol\":{\"keccak256\":\"0x1cdd39be0914d77600eb9bb1caa7d58dd9a54c41d902f1aff3d91e45c0d30437\",\"urls\":[\"bzzr://263439b60ca2f9e03d57820e733366a8f227a96ad92f2598204f66ebeeea2be7\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/modules/basic/BasicInvestModule.sol\":{\"keccak256\":\"0x92863246ae32d01bc5d8711201b27558023d4128144886c7a0d6304e1a7bbeed\",\"urls\":[\"bzzr://871ba167c925178515fec1add7756a45df91e763ab36fd569e856a8ecc7074bc\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/permission/SightStockOwnable.sol\":{\"keccak256\":\"0x4c4ae95659afae3118e5fef730c4ec205f2d1a7e7ce17e3e11a92bada6c059cf\",\"urls\":[\"bzzr://e8775474162b2b35bdf7e32ef1d424615c88fba0747315eaded48a3eb765ee67\"]}},\"version\":1}",
@@ -11948,9 +11995,16 @@
     "name": "solc",
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x9Bd4F7D944323211B4Cb67D152B967e01bB6a387",
+      "transactionHash": "0x2611ee1fdcf4b6cd2b5e8eb736a7d4a8eaa3167a131a901f937dd6bda3fe000d"
+    }
+  },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-05-25T07:53:18.366Z",
+  "updatedAt": "2019-05-25T08:12:34.532Z",
   "devdoc": {
     "methods": {
       "approve(address,uint256)": {

@@ -44,24 +44,21 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
         uint256 _endTime,
         uint256 _cap,
         uint256 _max_investors,
-        address _fundsReceiver,
         address _from
     )
     public
     onlyProduct
     returns (bool)
     {
-        require(_fundsReceiver != address(0), "Zero address is not permitted");
         require(_startTime >= now && _endTime > _startTime, "Date parameters are not valid");
         require(_cap > 0, "Cap should be greater than 0");
         
         startTime = _startTime;
         endTime = _endTime;
         cap = _cap;
-        fundsWallet = _fundsReceiver;
         max_investors = _max_investors;
         
-        emit RegisterdBasicInvestConfig(_from, _fundsReceiver, _cap,  _max_investors, _startTime,  _endTime);
+        emit RegisterdBasicInvestConfig(_from, _cap,  _max_investors, _startTime,  _endTime);
         
         return true;
 

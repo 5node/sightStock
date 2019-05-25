@@ -18,7 +18,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x36b0623b"
     },
     {
       "constant": true,
@@ -41,7 +42,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xa381af66"
     },
     {
       "constant": true,
@@ -55,7 +57,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xa66b1896"
     },
     {
       "constant": true,
@@ -74,7 +77,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xefd46065"
     },
     {
       "constant": true,
@@ -93,7 +97,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xf688cd18"
     },
     {
       "anonymous": false,
@@ -110,7 +115,8 @@
         }
       ],
       "name": "CreatedProduct",
-      "type": "event"
+      "type": "event",
+      "signature": "0x8c0f7e577fd29226f8016e8913b6b681d4e77daedacf782c96237c67ad3883b6"
     },
     {
       "anonymous": false,
@@ -127,7 +133,8 @@
         }
       ],
       "name": "AddedCustomProduct",
-      "type": "event"
+      "type": "event",
+      "signature": "0x6d6361190af7377448d15356b1e8f7c32bc8a8ae8eddc55c395536d7d44abb9b"
     },
     {
       "anonymous": false,
@@ -139,7 +146,8 @@
         }
       ],
       "name": "AddedCreator",
-      "type": "event"
+      "type": "event",
+      "signature": "0xde01ac6896c5b1bb768b9f622140a44faf53b6e47809bee039be206a1f88fce6"
     },
     {
       "anonymous": false,
@@ -151,7 +159,8 @@
         }
       ],
       "name": "DeletedCreator",
-      "type": "event"
+      "type": "event",
+      "signature": "0xe45c6f8f447021406b3538ba4907d0d431f8248ea7c4c7d839feee3e9c584038"
     },
     {
       "anonymous": false,
@@ -163,7 +172,8 @@
         }
       ],
       "name": "AddedAdmin",
-      "type": "event"
+      "type": "event",
+      "signature": "0x7849194239ab1d31b991b5436d81370256505cf25eaafbcccbc66acd11896916"
     },
     {
       "anonymous": false,
@@ -175,7 +185,8 @@
         }
       ],
       "name": "DeletedAdmin",
-      "type": "event"
+      "type": "event",
+      "signature": "0xbcfca65a032174af0578081c3d0e82f3d001c16d1a83423c877c479ed8330a15"
     },
     {
       "anonymous": false,
@@ -187,7 +198,8 @@
         }
       ],
       "name": "ChangedSigStockOwner",
-      "type": "event"
+      "type": "event",
+      "signature": "0x3bc8d7e68c6997eae332cc4b55e2dddd3b5d4b5d07e04e0e29104e1c5ac7c5c9"
     },
     {
       "constant": true,
@@ -206,7 +218,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xde5c6e4c"
     },
     {
       "constant": false,
@@ -225,7 +238,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xc009ff67"
     },
     {
       "constant": false,
@@ -256,7 +270,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x90d16cba"
     },
     {
       "constant": false,
@@ -275,7 +290,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x70ec35fc"
     },
     {
       "constant": false,
@@ -298,7 +314,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xce7dc679"
     },
     {
       "constant": false,
@@ -321,7 +338,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x7fea708b"
     },
     {
       "constant": false,
@@ -340,7 +358,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3b9dce05"
     },
     {
       "constant": false,
@@ -359,7 +378,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0xdb9ed188"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.4.24+commit.e67f0147\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"adminGroup\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_toAddCreator\",\"type\":\"address\"}],\"name\":\"addCreator\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_sigStockOwner\",\"type\":\"address\"}],\"name\":\"changeSigStockOwnership\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_admin\",\"type\":\"address\"},{\"name\":\"_num\",\"type\":\"uint8\"}],\"name\":\"deleteSigStockAdmin\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_title\",\"type\":\"string\"},{\"name\":\"_description\",\"type\":\"string\"},{\"name\":\"_creatorRate\",\"type\":\"uint256\"},{\"name\":\"_maxDivideValue\",\"type\":\"uint256\"}],\"name\":\"createProduct\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"creatorProducts\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"SIGSTOCK_OWNER\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_productAddress\",\"type\":\"address\"}],\"name\":\"addCustomProduct\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_admin\",\"type\":\"address\"},{\"name\":\"_num\",\"type\":\"uint8\"}],\"name\":\"addSigStockAdmin\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_toDeleteCreator\",\"type\":\"address\"}],\"name\":\"deleteCreator\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_creator\",\"type\":\"address\"}],\"name\":\"getNumCreatorProduct\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"isCreator\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"SIGSTOCK_ADMINS\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"_product\",\"type\":\"address\"}],\"name\":\"CreatedProduct\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"_product\",\"type\":\"address\"}],\"name\":\"AddedCustomProduct\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"newCreator\",\"type\":\"address\"}],\"name\":\"AddedCreator\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"toDeleteCreator\",\"type\":\"address\"}],\"name\":\"DeletedCreator\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"AddedAdmin\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"toDeleteAdmin\",\"type\":\"address\"}],\"name\":\"DeletedAdmin\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"ChangedSigStockOwner\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/registry/SigStockRegistry.sol\":\"SigStockRegistry\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/ERC20/ERC20Basic.sol\":{\"keccak256\":\"0x2869dac1f0baa65d84618e5b370ef4eeacac3b8c98bc8b52edc48e45c50c9dcc\",\"urls\":[\"bzzr://8228cc988b358b1c2cb5b9949ca232513decfb0e7e020e2993df1f95bc79dc9b\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceInvestModule.sol\":{\"keccak256\":\"0x950d1bfced6108634f3daff01f7197cb346453230025304dbd7cfc19a403f3e9\",\"urls\":[\"bzzr://b0940be88e6a3dc1ed80dd92f43937dfe02931bf379ae2ef6e9d00958db90e6e\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceModule.sol\":{\"keccak256\":\"0xd26adf02a6eb81dd1313fe01fff25c440060e0377d7227aa53e9103b06cffacf\",\"urls\":[\"bzzr://90f1b5fe0d88f9401d5a2779a5eee79905410997c7b823efb1ba2abb655624f7\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceProduct.sol\":{\"keccak256\":\"0x708bb96ac7bcf28871f31f9f632b31d06313d25889ca1af4aa19d3548fc40d6a\",\"urls\":[\"bzzr://7e1cc058845450b283c7ef589206e89b90ed9b000d22304034ac89f99b5496d7\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfacePurchaseModule.sol\":{\"keccak256\":\"0x20dea537a425efba87674dfef1a207db3c4c80a96c16100a95339af64e665fed\",\"urls\":[\"bzzr://a671a2d40e864954a3b9dc953d72c9c8b8ef8a6460378e5683507df8e60b3e1c\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/interface/InterfaceSigStockRegistry.sol\":{\"keccak256\":\"0x7d55d94a586b54a5eaa31925fa4172d401cc7d98f788fc5c5a101e2905c04325\",\"urls\":[\"bzzr://99f26646c4c04d482a49ac862f3f7c6cea88a8ba5185faeeb2e58c11581fe4c7\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/library/SafeMath.sol\":{\"keccak256\":\"0xac4c9356006b700c36b121cc3239e374612456671a83a3fc98b4f962d3a7dec2\",\"urls\":[\"bzzr://49c9a36794e93db94fad3d825eb340032f6bcf5c384271f52768db95ba101ed0\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/permission/SightStockOwnable.sol\":{\"keccak256\":\"0x4c4ae95659afae3118e5fef730c4ec205f2d1a7e7ce17e3e11a92bada6c059cf\",\"urls\":[\"bzzr://e8775474162b2b35bdf7e32ef1d424615c88fba0747315eaded48a3eb765ee67\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/product/Product.sol\":{\"keccak256\":\"0xbe79857551aab75e4448136be79eff766be433a1690fb5efa72913519373b407\",\"urls\":[\"bzzr://b067ebdb8f20112127bb2afd90f81ea54b160b4d7e3802577f495f9c94901e98\"]},\"/Users/berk/side_pj/5nodeProject/smtContract/contracts/registry/SigStockRegistry.sol\":{\"keccak256\":\"0x6843ce37174edb5412ee774c028bc4dce3fbbba5699421cfd06adcd168d8a810\",\"urls\":[\"bzzr://b3c52d67839e94aaa76815644640ea673d35f87a95118dfdecfdc5dd19382b95\"]}},\"version\":1}",
@@ -9863,9 +9883,16 @@
     "name": "solc",
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x7C0DF2E68924cc3F8450B61bcd9944feC3707d6e",
+      "transactionHash": "0xd52937dc29e660a61a0110b5e75fc626798075c0e62e1d2c00c5fa06ccb4e674"
+    }
+  },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-05-25T07:53:18.372Z",
+  "updatedAt": "2019-05-25T08:12:34.499Z",
   "devdoc": {
     "methods": {}
   },

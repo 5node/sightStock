@@ -14,7 +14,7 @@
     "start": "ENV=REAL node ./frontserver.js webpack.prod.config.js --watch",
     "start:local": "ENV=LOCAL node ./frontserver.js webpack.prod.config.js --watch",
     "build-contracts": "sol-merger \"./contracts/*/*.sol\" ./merged",
-    "build-contracts-module" : "sol-merger \"./contracts/*/*/*.sol\" ./merged"
+    "build-contracts-module": "sol-merger \"./contracts/*/*/*.sol\" ./merged"
   },
   "repository": {
     "type": "git"
@@ -23,6 +23,8 @@
   "license": "GPL-3.0",
   "dependencies": {
     "caver-js": "0.0.2-r",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^3.0.0",
     "classnames": "^2.2.5",
     "connect-privkey-to-provider": "0.0.3",
     "dotenv": "^6.0.0",

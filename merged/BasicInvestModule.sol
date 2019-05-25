@@ -218,7 +218,7 @@ contract InterfaceInvestModule is InterfaceModule {
     event ProductInvest(address indexed investor, address indexed beneficiary, uint256 value, uint256 amount);
     event DeliveredStock(uint256 tokenId, address indexed beneficiary, uint256 amount);
     event LogGranularityChanged(uint256 _oldGranularity, uint256 _newGranularity);
-    event RegisterdBasicInvestConfig(address _from, address _wallet, uint256 _cap, uint256 _maxInvestors, uint256 _startTime, uint256 _endTime);
+    event RegisterdBasicInvestConfig(address _from, uint256 _cap, uint256 _maxInvestors, uint256 _startTime, uint256 _endTime);
     
     struct InvestData {
         uint256 tokenId;
@@ -237,7 +237,6 @@ contract InterfaceInvestModule is InterfaceModule {
     uint public endTime;
     uint256 public cap;
     uint256 public max_investors;
-    address public fundsWallet;
 
     mapping (address => uint256) public investors;
     mapping (uint256 => InvestData) public investList;
@@ -251,7 +250,6 @@ contract InterfaceInvestModule is InterfaceModule {
         uint256 _endTime,
         uint256 _cap,
         uint256 _max_investors,
-        address _fundsReceiver,
         address _from
     )
     public
@@ -1135,24 +1133,21 @@ contract BasicInvestModule is InterfaceInvestModule, ReentrancyGuard, ERC721, ER
         uint256 _endTime,
         uint256 _cap,
         uint256 _max_investors,
-        address _fundsReceiver,
         address _from
     )
     public
     onlyProduct
     returns (bool)
     {
-        require(_fundsReceiver != address(0), "Zero address is not permitted");
         require(_startTime >= now && _endTime > _startTime, "Date parameters are not valid");
         require(_cap > 0, "Cap should be greater than 0");
         
         startTime = _startTime;
         endTime = _endTime;
         cap = _cap;
-        fundsWallet = _fundsReceiver;
         max_investors = _max_investors;
         
-        emit RegisterdBasicInvestConfig(_from, _fundsReceiver, _cap,  _max_investors, _startTime,  _endTime);
+        emit RegisterdBasicInvestConfig(_from, _cap,  _max_investors, _startTime,  _endTime);
         
         return true;
 

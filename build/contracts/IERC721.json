@@ -2754,7 +2754,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-05-25T07:53:18.359Z",
+  "updatedAt": "2019-05-25T08:12:32.459Z",
   "devdoc": {
     "methods": {
       "supportsInterface(bytes4)": {

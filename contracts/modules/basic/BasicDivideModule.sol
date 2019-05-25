@@ -19,6 +19,7 @@ contract BasicDivideModule is InterfaceDivideModule {
         require(isCleared == true, "is not cleared");
         _;
     }
+
     function clearedMission() external onlyRegistryAdmin returns(bool) {
         
         isCleared = true;
@@ -50,6 +51,10 @@ contract BasicDivideModule is InterfaceDivideModule {
         return true;
     }
     
+    function () external payable {
+        
+    }
+
     function purchase(address _from) public payable returns (bool) {
         
         purchased[Wallet] += msg.value;
